@@ -1,0 +1,1 @@
+ACTION=="add", SUBSYSTEM=="tty", KERNEL=="ttyUSB0", RUN+="/bin/systemctl start serialdump"

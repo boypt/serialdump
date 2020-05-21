@@ -1,0 +1,10 @@
+[Unit]
+Description=SerialDump daemon
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/serialdump -c /dev/ttyUSB0 -l /var/log
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
