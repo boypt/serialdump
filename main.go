@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"path"
+	"strings"
 	"time"
 
 	"github.com/tarm/serial"
@@ -55,7 +56,9 @@ func main() {
 
 	sc := bufio.NewScanner(s)
 	for sc.Scan() {
-		ts := time.Now().Format("2006-01-02 15:04:05")
-		w.Write([]byte(ts + " " + sc.Text() + "\n"))
+		if l := strings.TrimSpace(sc.Text()); l != "" {
+			ts := time.Now().Format("2006-01-02 15:04:05")
+			w.Write([]byte(ts + " " + l + "\n"))
+		}
 	}
 }
